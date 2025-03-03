@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .login, .profile {
+    margin: 20px;
+  }
+  
+  input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 200px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .graph {
+    margin-top: 20px;
+  }
+  
