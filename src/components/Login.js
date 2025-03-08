@@ -11,16 +11,16 @@ function Login({ setToken }) {
       const response = await fetch('https://learn.reboot01.com/api/auth/signin', {
         method: 'POST',
         headers: {
-          'Authorization': 'Basic ' + btoa(`${username}:${password}`),
-          'Content-Type': 'application/json'
+          'Authorization': 'Basic ' + btoa(`${username}:${password}`)
         }
       });
       const data = await response.text();
-      console.log('Response:', response);
-      console.log('Data:', data);
+      // console.log('Response:', response);
+      // console.log('Data:', data);
       if (response.ok) {
         console.log('Login successful, setting token...');
-        setToken(data);
+        sessionStorage.setItem('jwt', data.replace(/"/g, '')); // Store the token in session storage without extra quotes
+        setToken(data.replace(/"/g, '')); // Set the token without extra quotes
       } else {
         console.log('Login failed:', data);
         setError(data);
