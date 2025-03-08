@@ -262,7 +262,7 @@ function AuditRatio() {
         <rect x="10" y="40" width={`${downAuditPercentage}%`} height="20" fill="brown" />
         <text x={`${downAuditPercentage + 5}%`} y="55" fill="black">{downAudit.toFixed(0)} KB ↓</text>
       </svg>
-      <p>{ratio} Almost perfect!</p>
+      <p>{ratio} {ratio < 1 ? 'Careful buddy!' : 'Almost perfect!'}</p>
     </div>
   );
 }
