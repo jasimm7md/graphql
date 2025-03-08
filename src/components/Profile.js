@@ -117,10 +117,12 @@ function Profile({ token, setToken }) {
 
   return (
     <ApolloProvider client={client}>
-      <div className="profile">
-        <h2>Profile</h2>
+      <div className="profile-container">
+        <div className="profile-header">
+          <h2>Profile</h2>
+          <button onClick={handleLogout} className="logout-button">Logout</button>
+        </div>
         <UserInfo fetchAuditData={fetchAuditData} />
-        <button onClick={handleLogout}>Logout</button>
         <AuditHistory auditData={auditData} />
         {/* <Graph /> */}
         <Statistics />
@@ -157,9 +159,9 @@ function UserInfo({ fetchAuditData }) {
 function AuditHistory({ auditData }) {
   return (
     <div className="audit-history">
-      <h3>Audit History</h3>
+      <h3>Recent Audit</h3>
       {auditData.map((audit, index) => (
-        <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px', paddingLeft: '35px', paddingRight: '35px' }}>
+        <div key={index} className="audit-item">
           <div>
             {audit.group.captain.login} - {audit.group.path.split('/').pop()}
           </div>
@@ -256,9 +258,9 @@ function AuditRatio() {
       <h3>Audit Ratio</h3>
       <svg width="400" height="200">
         <rect x="10" y="10" width={`${upAuditPercentage}%`} height="20" fill="brown" />
-        <text x={`${upAuditPercentage + 1}%`} y="25" fill="black">{upAudit.toFixed(0)} KB ↑</text>
+        <text x={`${upAuditPercentage + 5}%`} y="25" fill="black">{upAudit.toFixed(0)} KB ↑</text>
         <rect x="10" y="40" width={`${downAuditPercentage}%`} height="20" fill="brown" />
-        <text x={`${downAuditPercentage + 1}%`} y="55" fill="black">{downAudit.toFixed(0)} KB ↓</text>
+        <text x={`${downAuditPercentage + 5}%`} y="55" fill="black">{downAudit.toFixed(0)} KB ↓</text>
       </svg>
       <p>{ratio} Almost perfect!</p>
     </div>

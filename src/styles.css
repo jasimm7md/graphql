@@ -1,32 +1,159 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .App {
-    text-align: center;
-  }
-  
-  .login, .profile {
-    margin: 20px;
-  }
-  
-  input {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 200px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin: 10px;
-  }
-  
-  .error {
-    color: red;
-  }
-  
-  .graph {
-    margin-top: 20px;
-  }
-  
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h2, h3 {
+  color: #333;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+/* Login Page Styles */
+.login {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login button:hover {
+  background-color: #0056b3;
+}
+
+.login .error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Profile Page Styles */
+.profile-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
+}
+
+.user-info, .audit-history, .statistics, .total-xp, .audit-ratio, .recent-projects {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.user-info, .audit-history {
+  width: 100%;
+}
+
+.statistics, .total-xp, .audit-ratio, .recent-projects {
+  width: 45%;
+  margin: 9px auto;
+}
+
+.audit-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.status-pending {
+  color: orange;
+}
+
+.status-pass {
+  color: green;
+}
+
+.status-fail {
+  color: red;
+}
+
+.statistics svg, .audit-ratio svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.recent-projects div {
+  padding: 5px 0;
+}
+
+.total-xp h3, .audit-ratio h3, .statistics h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.total-xp p, .audit-ratio p {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.audit-ratio svg text {
+  font-size: 0.8em;
+}
+
+.audit-ratio p {
+  font-size: 1em;
+  text-align: center;
+  margin-top: 10px;
+}
