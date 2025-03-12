@@ -6,6 +6,7 @@ function Login({ setToken }) {
   const [error, setError] = useState('');
 
   const handleLogin = async () => {
+    sessionStorage.removeItem('jwt');
     try {
       console.log('Attempting to log in...');
       const response = await fetch('https://learn.reboot01.com/api/auth/signin', {

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
-import { jwtDecode } from 'jwt-decode';
-// import Graph from './Graph';
 
-const client = new ApolloClient({
-  uri: 'https://learn.reboot01.com/api/graphql-engine/v1/graphql',
-  cache: new InMemoryCache(),
-  headers: {
-    Authorization: `Bearer ${sessionStorage.getItem('jwt')}`
-  }
-});
+const createApolloClient = (token) => {
+  return new ApolloClient({
+    uri: 'https://learn.reboot01.com/api/graphql-engine/v1/graphql',
+    cache: new InMemoryCache(),
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
 
 const USER_QUERY = gql`
   query {
@@ -89,13 +89,19 @@ const AUDIT_QUERY = gql`
 
 function Profile({ token, setToken }) {
   const [user, setUser] = useState(null);
+  const [client, setClient] = useState(null);
   const [auditData, setAuditData] = useState([]);
 
   useEffect(() => {
     try {
       const storedToken = sessionStorage.getItem('jwt');
-      const decoded = jwtDecode(storedToken);
-      setUser(decoded);
+      if (storedToken) {
+        const decoded = JSON.parse(atob(storedToken.split('.')[1]));
+        setUser(decoded);
+        setClient(createApolloClient(storedToken));
+      } else {
+        console.error('No token found');
+      }
     } catch (error) {
       console.error('Failed to decode token:', error);
     }
@@ -115,6 +121,10 @@ function Profile({ token, setToken }) {
     setToken(null);
   };
 
+  if (!client) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <ApolloProvider client={client}>
       <div className="profile-container">
@@ -122,7 +132,7 @@ function Profile({ token, setToken }) {
           <h2>Profile</h2>
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </div>
-        <UserInfo fetchAuditData={fetchAuditData} />
+        {user && <UserInfo userId={user.id} fetchAuditData={fetchAuditData} />}
         <AuditHistory auditData={auditData} />
         {/* <Graph /> */}
         <Statistics />
@@ -134,7 +144,7 @@ function Profile({ token, setToken }) {
   );
 }
 
-function UserInfo({ fetchAuditData }) {
+function UserInfo({ userId, fetchAuditData }) {
   const { loading, error, data } = useQuery(USER_QUERY);
 
   if (loading) return <p>Loading...</p>;
@@ -188,7 +198,7 @@ function Statistics() {
   const { loading, error, data } = useQuery(USER_QUERY);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error Statistics(): {error.message}</p>;
 
   const skills = data.progressionSkill[0]?.transactions || [];
   const topSkills = getTopSkills(skills);
@@ -225,7 +235,7 @@ function TotalXP() {
   const { loading, error, data } = useQuery(USER_QUERY);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error TotalXP(): {error.message}</p>;
 
   const xpAmount = data.transaction_aggregate.aggregate.sum.amount;
   const xpInKB = xpAmount / 1000;
@@ -243,7 +253,7 @@ function AuditRatio() {
   const { loading, error, data } = useQuery(USER_QUERY);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error AuditRatio(): {error.message}</p>;
 
   const user = data.user[0];
   const upAudit = user.totalUp / 1000;
@@ -271,7 +281,7 @@ function RecentProjects() {
   const { loading, error, data } = useQuery(USER_QUERY);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error RecentProjects(): {error.message}</p>;
 
   const recentProjects = data.recentProj || [];
 
