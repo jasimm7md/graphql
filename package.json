@@ -25,6 +25,9 @@
     "react-router-dom": "^7.3.0",
     "react-scripts": "^5.0.1"
   },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -36,8 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }
