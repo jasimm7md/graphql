@@ -2,6 +2,13 @@
 
 Welcome to the GraphQL Profile Project! This project is designed to help you learn and practice GraphQL by creating a profile page that displays your school information. The profile page includes various sections and graphical statistics generated using SVG.
 
+## Features ✨
+
+- User authentication with JWT
+- Fetch user data using GraphQL
+- Display user information, audit history, statistics, total XP, and recent projects
+- Responsive design
+
 ## Project Structure 📁
 
 ```plaintext
@@ -32,7 +39,8 @@ cd graphql
 ```
 2. Install the dependencies:
 ```bash
-npm install
+npm install react-router-dom
+npm install @apollo/client graphql
 ```
 
 ### Running the Project
@@ -54,5 +62,5 @@ To deploy the build to GitHub Pages, run:
 npm run deploy
 ```
 
-# Author
-Jasim Aldallal
+## Author 👤
+Jasim - [GitHub](https://github.com/jasimm7md)
