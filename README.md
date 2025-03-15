@@ -9,24 +9,6 @@ Welcome to the GraphQL Profile Project! This project is designed to help you lea
 - Display user information, audit history, statistics, total XP, and recent projects
 - Responsive design
 
-## Project Structure 📁
-
-```plaintext
-graphql-profile/
-├── public/
-│   └── [index.html](http://_vscodecontentref_/0)
-├── src/
-│   ├── components/
-│   │   ├── [Login.js](http://_vscodecontentref_/1)
-│   │   ├── [Profile.js](http://_vscodecontentref_/2)
-│   │   ├── [Graph.js](http://_vscodecontentref_/3)
-│   ├── [App.js](http://_vscodecontentref_/4)
-│   ├── [index.js](http://_vscodecontentref_/5)
-│   └── [styles.css](http://_vscodecontentref_/6)
-├── [package.json](http://_vscodecontentref_/7)
-└── README.md
-```
-
 ## Getting Started 🛠️
 ### Prerequisites
 Node.js and npm installed on your machine.
