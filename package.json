@@ -2,6 +2,7 @@
   "name": "graphql",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://jasimm7md.github.io/graphql",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
