@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error('Invalid credentials');
         }
 
-        const data = await response.json();
-        localStorage.setItem('jwt', data.jwt);
+        const jwt = await response.text(); // Get the response as text
+        console.log('JWT received:', jwt);
+        localStorage.setItem('jwt', jwt); // Store the JWT as a string
+        console.log('JWT stored:', localStorage.getItem('jwt'));
         window.location.href = 'index.html';
       } catch (error) {
         errorMessage.textContent = error.message;
@@ -30,10 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const jwt = localStorage.getItem('jwt');
-  if (jwt && window.location.pathname.endsWith('index.html')) {
-    fetchUserProfile(jwt);
-  }
+  // Add a delay to ensure localStorage is ready
+  setTimeout(() => {
+    const jwt = localStorage.getItem('jwt');
+    console.log('JWT retrieved on load:', jwt);
+    if (!jwt && window.location.pathname.endsWith('index.html')) {
+      //window.location.href = 'login.html';
+    } else if (jwt && window.location.pathname.endsWith('index.html')) {
+      fetchUserProfile(jwt);
+    }
+  }, 1000); // 1 second delay
 });
 
 async function fetchUserProfile(jwt) {
