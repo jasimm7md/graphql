@@ -70,7 +70,7 @@ async function fetchUserProfile(jwt) {
       })
     });
 
-    const data = await response.json();
+    const data = await response.text();
     displayUserProfile(data.data);
   } catch (error) {
     console.error('Error fetching user profile:', error);
