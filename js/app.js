@@ -171,8 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const auditData = [70, 30]; // Example data: 70% pass, 30% fail
       auditRatioGraph.innerHTML = `
         <svg viewBox="0 0 100 50">
-          <rect x="0" y="0" width="${auditData[0]}" height="50" fill="green" />
-          <rect x="${auditData[0]}" y="0" width="${auditData[1]}" height="50" fill="red" />
+          <rect x="0" y="0" width="${auditData[0]}" height="5" fill="green" />
+          <rect x="${auditData[0]}" y="0" width="${auditData[1]}" height="5" fill="red" />
         </svg>
       `;
     } else {
