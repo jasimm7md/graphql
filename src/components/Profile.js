@@ -206,7 +206,7 @@ function Statistics() {
   return (
     <div className="statistics">
       <h3>Statistics</h3>
-      <svg width="400" height="400" viewBox="0 0 400 400">
+      <svg viewBox="0 0 400 400" width="100%" height="100%">
         <polygon
           points={topSkills.map((skill, index) => {
             const angle = (Math.PI / 2) + (2 * Math.PI * index / topSkills.length);
@@ -266,7 +266,7 @@ function AuditRatio() {
   return (
     <div className="audit-ratio">
       <h3>Audit Ratio</h3>
-      <svg width="400" height="200">
+      <svg viewBox="0 0 400 200" width="100%" height="100%">
         <rect x="10" y="10" width={`${upAuditPercentage}%`} height="20" fill="brown" />
         <text x={`${upAuditPercentage + 5}%`} y="25" fill="black">{upAudit.toFixed(0)} KB ↑</text>
         <rect x="10" y="40" width={`${downAuditPercentage}%`} height="20" fill="brown" />

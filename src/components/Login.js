@@ -16,8 +16,6 @@ function Login({ setToken }) {
         }
       });
       const data = await response.text();
-      // console.log('Response:', response);
-      // console.log('Data:', data);
       if (response.ok) {
         console.log('Login successful, setting token...');
         sessionStorage.setItem('jwt', data.replace(/"/g, '')); // Store the token in session storage without extra quotes
